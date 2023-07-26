@@ -1,12 +1,15 @@
-package Productos;
+package Tienda;
 
-public class Productos {
+public class Tienda {
     private String name;
     private String category;
     private double precio;
     private int cantidadInventario;
+    private boolean productoExiste;
+    public Tienda(){
 
-    public Productos(String name, String category, double precio, int cantidadInventario) {
+    }
+    public Tienda(String name, String category, double precio, int cantidadInventario) {
         this.name = name;
         this.category = category;
         this.precio = precio;
@@ -43,5 +46,23 @@ public class Productos {
 
     public void setCantidadInventario(int cantidadInventario) {
         this.cantidadInventario = cantidadInventario;
+    }
+
+    public boolean isProductoExiste() {
+        return productoExiste;
+    }
+
+    public void setProductoExiste(boolean productoExiste) {
+        this.productoExiste = productoExiste;
+    }
+
+    @Override
+    public String toString() {
+        return "Productos{" +
+                "name='" + name + '\'' +
+                ", category='" + category + '\'' +
+                ", precio=" + precio +
+                ", cantidadInventario=" + cantidadInventario +
+                '}';
     }
 }
