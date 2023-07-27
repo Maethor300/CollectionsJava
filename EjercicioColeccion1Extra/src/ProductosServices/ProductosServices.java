@@ -57,23 +57,86 @@ public class ProductosServices {
          }
      }
      public void editProducts(ArrayList <Tienda> dataBase){
-         Scanner scanner = new Scanner(System.in);
+         Scanner scanner = new Scanner(System.in).useDelimiter("\n");
          Tienda productos = new Tienda();
-         System.out.println("Digita el nombre del producto que quieres modificar");
-         String name = scanner.nextLine();
-         for (Tienda i : dataBase
-              ) {
-             if(i.getName().equalsIgnoreCase(name)){
-                 System.out.println("Ingresa el nuevo nombre del producto");
-                 i.setName(scanner.nextLine());
-                 System.out.println("Ingresa la nueva categoria");
-                 i.setCategory(scanner.nextLine());
-                 System.out.println("Ingresa el nuevo precio");
-                 i.setPrecio(scanner.nextInt());
-             }else {
-                 System.out.println("No esta el producto");
+
+         do {
+             boolean outNumber = true;
+             System.out.println("Digita el nombre del producto que quieres modificar");
+
+             String name = scanner.nextLine();
+             System.out.println("Que quieres modificar?");
+             System.out.println("1: Nombre");
+             System.out.println("2: Category");
+             System.out.println("3: Precio");
+             System.out.println("4: Salir");
+             int numeroDesicion = scanner.nextInt();
+             switch (numeroDesicion){
+                 case 1:
+                     for (Tienda i : dataBase
+                          ) {
+                         if(i.getName().equalsIgnoreCase(name)){
+                             System.out.println("Introduce el nuevo nombre:");
+                             scanner.nextLine();
+                             String newName = scanner.nextLine();
+                             i.setName(newName);
+
+                         }else {
+                             System.out.println("No esta el producto");
+                         }
+                     }
+                 break;
+                 case 2:
+                     for (Tienda i : dataBase
+                          ) {
+                         if(i.getName().equalsIgnoreCase(name)){
+                             System.out.println("Introduce la nueva categoria");
+                             scanner.nextLine();
+                             String newCategory = scanner.nextLine();
+
+                             i.setCategory(newCategory);
+
+                         }else {
+                             System.out.println("No esta el producto");
+                         }
+                     }
+                 break;
+                 case 3:
+                     for (Tienda i : dataBase
+                     ) {
+                         if(i.getName().equalsIgnoreCase(name)){
+                             System.out.println("Introduce la nueva categoria");
+                             scanner.nextDouble();
+                             double newPrecio = scanner.nextDouble();
+
+                             i.setPrecio(newPrecio);
+
+                         }else {
+                             System.out.println("No esta el producto");
+                         }
+                     }
+                 break;
+                 case 4:
+                     System.out.println("Quieres salir? 1 para seguir actualizando o 0 para salir");
+                     int salirOutDesisition = scanner.nextInt();
+
+                     if (salirOutDesisition == 0 ) {
+                         outNumber = false;
+                     }
+                 break;
+                 default:
+                     System.out.println("Error Numero no indicado");
+                 break;
              }
-         }
+             System.out.println("Quieres terminar 1 seguir / 0 terminar");
+             int desitionFinal = scanner.nextInt();
+             if(desitionFinal == 0){
+                 outNumber = false;
+             }
+             if(!outNumber){
+                 break;
+             }
+         }while(true);
      }
      public void deleteProducts(ArrayList <Tienda> dataBase){
          Scanner scanner = new Scanner(System.in);
