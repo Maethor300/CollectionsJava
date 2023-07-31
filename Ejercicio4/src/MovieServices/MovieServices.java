@@ -3,8 +3,7 @@ package MovieServices;
 import EntitieMovie.EntitieMovie;
 
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 public class MovieServices {
     Scanner scanner = new Scanner(System.in).useDelimiter("\n");
@@ -17,7 +16,7 @@ public class MovieServices {
         em.setTitulo(nombre);
         System.out.println("Digita el Director de la pelicula");
         String nombreDirector = scanner.nextLine();
-        em.setDirectador(nombreDirector);
+        em.setDirector(nombreDirector);
         System.out.println("Digita el tiempo de la pelicula");
         System.out.println("Horas");
         int horas = scanner.nextInt();
@@ -43,4 +42,17 @@ public class MovieServices {
             }
         }
     }
+
+   public void mostrarPeliculaMenorAMayor(){
+       dataBase.sort(EntitieMovie.compararTiempoMenor);
+   }
+   public void mostrarPeliculaMayorAMenor(){
+       dataBase.sort(EntitieMovie.compararTiempoMayor);
+   }
+   public void mostrarPeliculaAlfabeticoTitulo(){
+      Collections.sort(dataBase , (EntitieMovie a, EntitieMovie b) -> a.getTitulo().compareTo(b.getTitulo())) ;
+   }
+   public void mostrarPeliculaAlfabeticoDirector(){
+        dataBase.sort(EntitieMovie.compararDirector);
+   }
 }
