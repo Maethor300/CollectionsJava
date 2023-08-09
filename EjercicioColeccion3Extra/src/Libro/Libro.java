@@ -1,5 +1,7 @@
 package Libro;
 
+import java.util.Objects;
+
 public class Libro {
     private String titulo;
     private String autor;
@@ -55,5 +57,18 @@ public class Libro {
                 ", numeroEjemplares=" + numeroEjemplares +
                 ", numeroDeEjemplaresPrestados=" + numeroDeEjemplaresPrestados +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Libro libro = (Libro) o;
+        return Objects.equals(titulo, libro.titulo) && Objects.equals(autor, libro.autor);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(titulo, autor);
     }
 }
